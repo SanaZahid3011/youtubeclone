@@ -10,8 +10,8 @@ html, body {
 
 .sidebar{
     background: #fff;
-      height: 100vh;
-      width :15%;
+    height: 100vh;
+    width :15%;
     position: fixed;
     top:0;
     padding-left: 2%;

@@ -5,11 +5,12 @@ import Home from './Pages/Home/Home';
 import Video from './Pages/Video/Video';
 
 function App() {
+  const[Sidebar,setSidebar]=useState(true);
   return (
     <div>
-      <Navbar />
+      <Navbar setSidebar={setSidebar} />
       <Routes>
-      <Route path='/' element={<Home/>}/>
+      <Route path='/' element={<Home Sidebar={Sidebar}/>}/>
       <Route path='/Video/:categoryId/:videoId' element={<Video/>}/>
       </Routes>
     </div>

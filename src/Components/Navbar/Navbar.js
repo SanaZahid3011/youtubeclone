@@ -12,10 +12,10 @@ const Navbarr = ({setSidebar}) => {
   return (
     <nav className='flex-div'>
        <div className='nav-left flex-div'>
-           <img src={menuIcon} onClick={()=>setSidebar(prev=>prev===false?true:false)} className='menu-icon' alt=""/>
+           <img src={menuIcon} onClick={() => setSidebar(prev => !prev)} className='menu-icon' alt=""/>
            <img src={logo} className='logo' alt=""/> 
        </div>
-
+ 
        <div className='nav-middle flex-div'>
          <div className='search-box flex-div'>
             <input type='text' placeholder='Search'/>

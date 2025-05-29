@@ -10,7 +10,7 @@ function App() {
     <div>
       <Navbar setSidebar={setSidebar} />
       <Routes>
-      <Route path='/' element={<Home Sidebar={sidebar}/>}/>
+      <Route path='/' element={<Home sidebar={sidebar}/>}/>
       <Route path='/Video/:categoryId/:videoId' element={<Video/>}/>
       </Routes>
     </div>

@@ -1,16 +1,16 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Navbar from './Components/Navbar/Navbar';
 import {Route,Routes} from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import Video from './Pages/Video/Video';
 
 function App() {
-  const[Sidebar,setSidebar]=useState(true);
+  const[sidebar,setSidebar]=useState(true);
   return (
     <div>
       <Navbar setSidebar={setSidebar} />
       <Routes>
-      <Route path='/' element={<Home Sidebar={Sidebar}/>}/>
+      <Route path='/' element={<Home Sidebar={sidebar}/>}/>
       <Route path='/Video/:categoryId/:videoId' element={<Video/>}/>
       </Routes>
     </div>

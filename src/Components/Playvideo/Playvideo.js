@@ -13,7 +13,7 @@ const Playvideo = () => {
     <div className='play-video'>
         <video src={video1} controls autoPlay muted></video>
         <h3>Best youTube Channel to learn web development</h3>
-        <div className='play-video-info'>
+        <div className='play-video-info'> 
             <p>1525 views ,2 days ago</p>
             <div>
                 <span><img src={like} alt=""/>125</span>

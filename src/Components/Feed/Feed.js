@@ -25,7 +25,7 @@ const Feed = ({category}) => {
     <div className='feed'>
     {data.map((item,index)=>{
       return(
-         <Link to={`video/20/4521`} className='card'>
+         <Link to={`video/${item.snippet.categoryId}/${item.id}`} className='card'>
         <img src={thumbnail1} alt="" />
         <h2>Best channel to learn coding that help you to be a web developer</h2>
         <h3>Greatstack</h3>

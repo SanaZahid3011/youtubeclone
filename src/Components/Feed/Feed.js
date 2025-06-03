@@ -33,6 +33,6 @@ const Feed = ({category}) => {
 
     </div>
   )
-}
+} 
 
 export default Feed

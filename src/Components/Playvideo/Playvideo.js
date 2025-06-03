@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState}from 'react';
 import '../../Style/Playvideo.css';
 import video1 from '../../assets/video.mp4';
 import like from '../../assets/like.png';
@@ -14,8 +14,11 @@ const Playvideo = ({videoId}) => {
 
     const fetchvideoData=async (params) => {
         const videoDetails_url=`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY  }`
-       
+        await fetch(videoDetails_url).then(res=>res.json()).then(data=>setApidata(data.items[0]));
     }
+    useEffect(() => {
+    fetchvideoData();
+  }, [category])
   return (
     <div className='play-video'>
        <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

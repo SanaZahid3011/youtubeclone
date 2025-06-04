@@ -25,10 +25,10 @@ const Playvideo = ({videoId}) => {
        <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <h3>{Apidata?Apidata.snippet.title:"Title Here"}</h3>
         <div className='play-video-info'> 
-            <p>{Apidata?Value_Converter(Apidata.statistics.viewCount):"16k"} views ,{moment(Apidata.snippet.publishedAt).fromNow()}</p>
+            <p>{Apidata?Value_Converter(Apidata.statistics.viewCount):"16k"} views , {Apidata ? moment(Apidata.snippet.publishedAt).fromNow() : "Some time ago"}</p>
             <div>
-                <span><img src={like} alt=""/>125</span>
-                <span><img src={dislike} alt=""/>2</span>
+                <span><img src={like} alt=""/>{Apidata?Value_Converter(Apidata.statistics.likeCount):"166"}</span>
+                <span><img src={dislike} alt=""/></span>
                 <span><img src={share} alt=""/>Share</span>
                 <span><img src={save} alt=""/>Save</span>
             </div>
@@ -37,15 +37,15 @@ const Playvideo = ({videoId}) => {
         <div className='Publisher'>
             <img src={jack} alt="" />
             <div>
-                <p>GreatStack</p>
+                <p>{Apidata?Apidata.snippet.channelTitle:"Title Here"}</p>
                 <span>1M Subscribers</span>
             </div>
             <button>Subscribe</button>
         </div>
         <div className='vid-description'>
-            <p>Channel that make learning easy</p>
-            <p>Subscribe GeatStack to watch more tutorials on web development</p>
+            <p>{Apidata ?Apidata.snippet.description.slice(0,300) : "Description Here"}</p>
             <hr/>
+            <h4>{Apidata?Value_Converter(Apidata.statistics.commentCount):"166"} Comments</h4>
             <div className='comment'>
                 <img src={user_profile} alt="" />
                 <div>

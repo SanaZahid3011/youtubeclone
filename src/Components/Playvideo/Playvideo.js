@@ -21,12 +21,17 @@ const Playvideo = ({videoId}) => {
 
       const fetchChannelData=async (params) => {
         const channelData_url=`https://youtube.googleapis.com/youtube/v3/channel?part=snippet%2CcontentDetails%2Cstatistics&id=${Apidata.snippet.channelId}&key=${API_KEY}`
-    
+        await fetch(channelData_url).then(res=>res.json()).then(data=>setChannelData(data.items[0]));
     }
 
     useEffect(() => {
     fetchvideoData();
-  }, [])
+  }, []);
+
+   useEffect(() => {
+    fetchChannelData();
+  }, [Apidata]);
+
   return (
     <div className='play-video'>
        <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

@@ -1,6 +1,5 @@
-import React ,{useState}from 'react';
+import React ,{useState,useEffect}from 'react';
 import '../../Style/Playvideo.css';
-import video1 from '../../assets/video.mp4';
 import like from '../../assets/like.png';
 import dislike from '../../assets/dislike.png';
 import share from '../../assets/share.png';
@@ -8,6 +7,8 @@ import save from '../../assets/save.png';
 import jack from '../../assets/jack.png';
 import user_profile from '../../assets/user_profile.jpg';
 import {API_KEY} from '../../data';
+import {Value_Converter} from '../../data';
+import moment from 'moment';
 
 const Playvideo = ({videoId}) => {
     const [Apidata,setApidata] = useState(null)
@@ -18,13 +19,13 @@ const Playvideo = ({videoId}) => {
     }
     useEffect(() => {
     fetchvideoData();
-  }, [category])
+  }, [])
   return (
     <div className='play-video'>
        <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <h3>Best youTube Channel to learn web development</h3>
+        <h3>{Apidata?Apidata.snippet.title:"Title Here"}</h3>
         <div className='play-video-info'> 
-            <p>1525 views ,2 days ago</p>
+            <p>{Apidata?Value_Converter(Apidata.statistics.viewCount):"16k"} views ,{moment(Apidata.snippet.publishedAt).fromNow()}</p>
             <div>
                 <span><img src={like} alt=""/>125</span>
                 <span><img src={dislike} alt=""/>2</span>

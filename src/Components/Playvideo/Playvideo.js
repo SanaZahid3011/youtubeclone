@@ -11,12 +11,19 @@ import {Value_Converter} from '../../data';
 import moment from 'moment';
 
 const Playvideo = ({videoId}) => {
-    const [Apidata,setApidata] = useState(null)
+    const [Apidata,setApidata] = useState(null);
+    const [channelData,setChannelData]=useState(null);
 
     const fetchvideoData=async (params) => {
-        const videoDetails_url=`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY  }`
+        const videoDetails_url=`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`
         await fetch(videoDetails_url).then(res=>res.json()).then(data=>setApidata(data.items[0]));
     }
+
+      const fetchChannelData=async (params) => {
+        const channelData_url=`https://youtube.googleapis.com/youtube/v3/channel?part=snippet%2CcontentDetails%2Cstatistics&id=${Apidata.snippet.channelId}&key=${API_KEY}`
+    
+    }
+
     useEffect(() => {
     fetchvideoData();
   }, [])

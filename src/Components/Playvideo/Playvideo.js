@@ -20,17 +20,21 @@ const Playvideo = ({videoId}) => {
     }
 
       const fetchChannelData=async (params) => {
-        const channelData_url=`https://youtube.googleapis.com/youtube/v3/channel?part=snippet%2CcontentDetails%2Cstatistics&id=${Apidata.snippet.channelId}&key=${API_KEY}`
+        const channelData_url=`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${Apidata.snippet.channelId}&key=${API_KEY}`
         await fetch(channelData_url).then(res=>res.json()).then(data=>setChannelData(data.items[0]));
+
+       
     }
 
     useEffect(() => {
     fetchvideoData();
   }, []);
 
-   useEffect(() => {
+useEffect(() => {
+  if (Apidata && Apidata.snippet && Apidata.snippet.channelId) {
     fetchChannelData();
-  }, [Apidata]);
+  }
+}, [Apidata]);
 
   return (
     <div className='play-video'>
@@ -47,10 +51,10 @@ const Playvideo = ({videoId}) => {
         </div>
         <hr/>
         <div className='Publisher'>
-            <img src={jack} alt="" />
+            <img src={channelData?channelData.snippet.thumbnails.default.url:""} alt="" />
             <div>
                 <p>{Apidata?Apidata.snippet.channelTitle:"Title Here"}</p>
-                <span>1M Subscribers</span>
+                <span>{channelData?Value_Converter(channelData.statistics.subscriberCount):""} Subscribers</span>
             </div>
             <button>Subscribe</button>
         </div>

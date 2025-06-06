@@ -14,7 +14,7 @@ const Feed = ({category}) => {
     await fetch(videolink_URL).then(response=>response.json()).then(data=>setdata(data.items))
   }
   useEffect(() => {
-    fetchdata()
+    fetchdata();
   }, [category])
   
   return (

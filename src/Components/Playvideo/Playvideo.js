@@ -13,6 +13,7 @@ import moment from 'moment';
 const Playvideo = ({videoId}) => {
     const [Apidata,setApidata] = useState(null);
     const [channelData,setChannelData]=useState(null);
+     const [commentData,setCommentData]=useState([]);
 
     const fetchvideoData=async (params) => {
         const videoDetails_url=`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`
@@ -23,7 +24,8 @@ const Playvideo = ({videoId}) => {
         const channelData_url=`https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${Apidata.snippet.channelId}&key=${API_KEY}`
         await fetch(channelData_url).then(res=>res.json()).then(data=>setChannelData(data.items[0]));
 
-       
+        const comment_url=`https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=50&videoId=${videoId}&key=${API_KEY}`
+        await fetch(comment_url).then(res=>res.json()).then(data=>setCommentData(data.items));
     }
 
     useEffect(() => {
@@ -62,85 +64,8 @@ useEffect(() => {
             <p>{Apidata ?Apidata.snippet.description.slice(0,300) : "Description Here"}</p>
             <hr/>
             <h4>{Apidata?Value_Converter(Apidata.statistics.commentCount):"166"} Comments</h4>
-            <div className='comment'>
-                <img src={user_profile} alt="" />
-                <div>
-                    <h3>Jack Nicholson<span>1 day ago</span></h3>
-                    <p>A global computer network providing a variety of information and interconnect
-                    network using standardlized communication protocol.</p>
-                    <div className='comment-section'>
-                        <img src={like} alt="" />
-                        <span>244</span>
-                        <img src={dislike} alt="" />
-                    </div>
-                </div>
-            </div>
-                 <div className='comment'>
-                <img src={user_profile} alt="" />
-                <div>
-                    <h3>Jack Nicholson<span>1 day ago</span></h3>
-                    <p>A global computer network providing a variety of information and interconnect
-                    network using standardlized communication protocol.</p>
-                    <div className='comment-section'>
-                        <img src={like} alt="" />
-                        <span>244</span>
-                        <img src={dislike} alt="" />
-                    </div>
-                </div>
-            </div>
-
-                 <div className='comment'>
-                <img src={user_profile} alt="" />
-                <div>
-                    <h3>Jack Nicholson<span>1 day ago</span></h3>
-                    <p>A global computer network providing a variety of information and interconnect
-                    network using standardlized communication protocol.</p>
-                    <div className='comment-section'>
-                        <img src={like} alt="" />
-                        <span>244</span>
-                        <img src={dislike} alt="" />
-                    </div>
-                </div>
-            </div>
-                 <div className='comment'>
-                <img src={user_profile} alt="" />
-                <div>
-                    <h3>Jack Nicholson<span>1 day ago</span></h3>
-                    <p>A global computer network providing a variety of information and interconnect
-                    network using standardlized communication protocol.</p>
-                    <div className='comment-section'>
-                        <img src={like} alt="" />
-                        <span>244</span>
-                        <img src={dislike} alt="" />
-                    </div>
-                </div>
-            </div>
-                 <div className='comment'>
-                <img src={user_profile} alt="" />
-                <div>
-                    <h3>Jack Nicholson<span>1 day ago</span></h3>
-                    <p>A global computer network providing a variety of information and interconnect
-                    network using standardlized communication protocol.</p>
-                    <div className='comment-section'>
-                        <img src={like} alt="" />
-                        <span>244</span>
-                        <img src={dislike} alt="" />
-                    </div>
-                </div>
-            </div>
-                 <div className='comment'>
-                <img src={user_profile} alt="" />
-                <div>
-                    <h3>Jack Nicholson<span>1 day ago</span></h3>
-                    <p>A global computer network providing a variety of information and interconnect
-                    network using standardlized communication protocol.</p>
-                    <div className='comment-section'>
-                        <img src={like} alt="" />
-                        <span>244</span>
-                        <img src={dislike} alt="" />
-                    </div>
-                </div>
-            </div>
+           
+           
         </div>
     </div>
   )

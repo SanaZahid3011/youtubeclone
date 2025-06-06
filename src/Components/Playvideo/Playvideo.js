@@ -64,7 +64,22 @@ useEffect(() => {
             <p>{Apidata ?Apidata.snippet.description.slice(0,300) : "Description Here"}</p>
             <hr/>
             <h4>{Apidata?Value_Converter(Apidata.statistics.commentCount):"166"} Comments</h4>
-           
+            {commentData.map((item,index)=>{
+                return(
+                <div key={index} className='comment'>
+                <img src={item.snippet.topLevelComment.snippet.authorProfileImageUrl} alt="" />
+                <div>
+                    <h3>{item.snippet.topLevelComment.snippet.authorDisplayName}<span>1 day ago</span></h3>
+                    <p>{item.snippet.topLevelComment.snippet.textDisplay}</p>
+                    <div className='comment-section'>
+                        <img src={like} alt="" />
+                        <span>{Value_Converter(item.snippet.topLevelComment.snippet.likeCount)}</span>
+                        <img src={dislike} alt="" />
+                    </div>
+                </div>
+            </div>
+                )
+            })}
            
         </div>
     </div>

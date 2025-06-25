@@ -7,10 +7,11 @@
     margin-bottom:8px;
 }
 .side-video-list img{
+    border-radius: 5px;
     flex-basis:49%;
     width: 50%;
     padding-right: 10px;
-    border-radius: 5px;
+  
 }
 .video-info{
     flex-basis: 49%;

@@ -1,5 +1,6 @@
 import React ,{useState,useEffect}from 'react';
 import '../../Style/Playvideo.css';
+import { useParams } from 'react-router-dom';
 import like from '../../assets/like.png';
 import dislike from '../../assets/dislike.png';
 import share from '../../assets/share.png';
@@ -10,7 +11,8 @@ import {API_KEY} from '../../data';
 import {Value_Converter} from '../../data';
 import moment from 'moment';
 
-const Playvideo = ({videoId}) => {
+const Playvideo = () => {
+  const {videoId} =useParams();
     const [Apidata,setApidata] = useState(null);
     const [channelData,setChannelData]=useState(null);
      const [commentData,setCommentData]=useState([]);
@@ -30,7 +32,7 @@ const Playvideo = ({videoId}) => {
 
     useEffect(() => {
     fetchvideoData();
-  }, []);
+  }, [videoId]);
 
 useEffect(() => {
   if (Apidata && Apidata.snippet && Apidata.snippet.channelId) {

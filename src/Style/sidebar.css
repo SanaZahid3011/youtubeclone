@@ -78,3 +78,30 @@ html, body {
     padding-bottom:2px;
     border-bottom:3px solid red;
 }
+@media (max-width:1200px){
+    .sortcut-links img{
+        display:none
+    }
+    .subscribed-list .side-links img{
+        display:none;
+    }
+    
+}
+@media(max-width:900px){
+     .sidebar{
+        width:11%;
+    }
+    .sortcut-links .side-links img{
+        display :block;
+        width:25px
+    }
+    .sidebar p{
+        display:none;
+    }
+    hr{
+        display:none;
+    }
+     .subscribed-list h3{
+        display:none;
+     }
+}

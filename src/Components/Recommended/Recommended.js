@@ -1,11 +1,10 @@
 import React,{useEffect,useState} from 'react'
 import '../../Style/Recommended.css';
-import jack from '../../assets/jack.png';
 import {Value_Converter} from '../../data';
-import {API_KEY} from '../../data';
 import {Link} from 'react-router-dom'
 
 const Recommended = ({categoryId}) => {
+  const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY; 
   const [apiData,setapiData]=useState([]);
   const fetchData=async()=>{
     const related_url = `https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=US&videoCategoryId=${categoryId}&maxResults=50&key=${API_KEY}`;

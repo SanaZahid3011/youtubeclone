@@ -5,18 +5,16 @@ import like from '../../assets/like.png';
 import dislike from '../../assets/dislike.png';
 import share from '../../assets/share.png';
 import save from '../../assets/save.png';
-import jack from '../../assets/jack.png';
-import user_profile from '../../assets/user_profile.jpg';
-import {API_KEY} from '../../data';
 import {Value_Converter} from '../../data';
 import moment from 'moment';
 
 const Playvideo = () => {
+
   const {videoId} =useParams();
     const [Apidata,setApidata] = useState(null);
     const [channelData,setChannelData]=useState(null);
      const [commentData,setCommentData]=useState([]);
-
+  const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY; 
     const fetchvideoData=async (params) => {
         const videoDetails_url=`https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`
         await fetch(videoDetails_url).then(res=>res.json()).then(data=>setApidata(data.items[0]));

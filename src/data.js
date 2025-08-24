@@ -1,4 +1,3 @@
-// API key removed for security
 
 export const Value_Converter=(value)=>{
     if(value>=1000000)

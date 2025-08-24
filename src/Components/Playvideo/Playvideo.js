@@ -64,7 +64,7 @@ useEffect(() => {
             <p>{Apidata ?Apidata.snippet.description.slice(0,300) : "Description Here"}</p>
             <hr/>
             <h4>{Apidata?Value_Converter(Apidata.statistics.commentCount):"166"} Comments</h4>
-            {commentData.map((item,index)=>{
+            {Array.isArray(commentData)&&commentData.map((item,index)=>{
                 return(
                 <div key={index} className='comment'>
                 <img src={item.snippet.topLevelComment.snippet.authorProfileImageUrl} alt="" />
